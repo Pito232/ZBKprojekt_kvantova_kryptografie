@@ -13,10 +13,10 @@
 				<div class="inner">
 					<nav>
 						<ul>
-							<li><a href="index.html" class="active">Úvod</a></li>
-							<li><a href="stav.html">Stav a QKD Protokoly</a></li>
-							<li><a href="utoky.html">Útoky a Postkvantová Kryptografie</a></li>
-							<li><a href="reference.html">Závěr a Reference</a></li>
+							<li><a href="#uvod">Úvod (Titulní strana)</a></li>
+							<li><a href="#stav">Stav a Protokoly QKD</a></li>
+							<li><a href="#utoky">Útoky a PQC</a></li>
+							<li><a href="#nazor">Vlastní Názor a Závěr</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -24,16 +24,82 @@
 
 		<div id="wrapper">
 
-				<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<h1>Budoucnost kybernetické bezpečnosti: Kvantová kryptografie</h1>
-							<p>Prezentace technologie, metod a protokolů. Cílem projektu je popsat principy Kvantové kryptografie, analyzovat současný stav a prozkoumat hrozby v éře kvantových počítačů.<br />
-							Projekt vypracovali: **[Jméno Student 1]**, **[Jméno Student 2]**</p>
-							<ul class="actions">
-								<li><a href="stav.html" class="button scrolly">Pokračovat na Detailní Popis</a></li>
-							</ul>
+				<section id="uvod" class="wrapper style1 fullscreen fade-up">
+					<div class="inner">
+						<h1>Budoucnost kybernetické bezpečnosti: Kvantová kryptografie</h1>
+						<p>Prezentace technologie, metod a protokolů. Kompletní dokumentace k projektu je rozdělena do detailních sekcí dostupných z přehledu níže.<br />
+						Projekt vypracovali: **[Jméno Student 1]**, **[Jméno Student 2]**</p>
+						<ul class="actions">
+							<li><a href="#stav" class="button scrolly">Prozkoumat témata projektu</a></li>
+						</ul>
+					</div>
+				</section>
+
+				<section id="stav" class="wrapper style2 spotlights">
+					<section>
+						<a href="stav.html" class="image"><img src="images/pic01.jpg" alt="Optické vlákno pro QKD" data-position="center center" /></a>
+						<div class="content">
+							<div class="inner">
+								<h2>1. Stav a QKD Protokoly</h2>
+								<p>Tato sekce se zaměřuje na principy **Kvantové distribuce klíče (QKD)**, která zajišťuje fyzikálně neprolomitelnou bezpečnost.</p>
+                                
+                                <h3>Klíčová témata</h3>
+                                <ul class="alt">
+                                    <li>Kvantové principy (Superpozice, Nezákonitost)</li>
+                                    <li>Protokol **BB84** a jeho fungování</li>
+                                    <li>Architektura a limity QKD sítí</li>
+                                </ul>
+                                
+                                <ul class="actions">
+									<li><a href="stav.html" class="button primary">Přejít na DETAIL BB84 a QKD</a></li>
+								</ul>
+							</div>
 						</div>
 					</section>
+				</section>
+                
+                <section id="utoky" class="wrapper style3 fade-up">
+					<div class="inner">
+						<h2>2. Útoky a Postkvantová Kryptografie</h2>
+						<p>Analýza hrozby kvantových počítačů a řešení, které nabízí Postkvantová kryptografie.</p>
+                        
+						<div class="features">
+							<section>
+								<span class="icon solid major fa-server"></span>
+								<h3>Hrozby</h3>
+                                <ul class="alt">
+                                    <li>**Útok HNDL** (Harvest Now, Decrypt Later)</li>
+                                    <li>**Shorův algoritmus**</li>
+                                    <li>Praktické útoky na QKD (PNS)</li>
+                                </ul>
+							</section>
+							<section>
+								<span class="icon solid major fa-lock"></span>
+								<h3>Řešení</h3>
+                                <ul class="alt">
+                                    <li>**Postkvantová kryptografie (PQC)**</li>
+                                    <li>Standardizace NIST (Kyber, Dilithium)</li>
+                                    <li>Hybridní kryptografie</li>
+                                </ul>
+							</section>
+						</div>
+                        <ul class="actions">
+                            <li><a href="utoky.html" class="button primary">Přejít na DETAIL Útoků a PQC</a></li>
+                        </ul>
+					</div>
+				</section>
+                
+                <section id="nazor" class="wrapper style1 fade-up">
+					<div class="inner">
+						<h2>3. Vlastní Názor, Příspěvek a Závěr</h2>
+						<p>Shrnutí klíčových zjištění projektu, vlastní pohled na téma a tabulkové srovnání PQC algoritmů jako náš vlastní přínos.</p>
+						
+                        <ul class="actions">
+                            <li><a href="reference.html" class="button primary">Přejít na DETAIL Závěru a Reference</a></li>
+                        </ul>
+					</div>
+				</section>
+                
 			</div>
 
 		<footer id="footer" class="wrapper style1-alt">
