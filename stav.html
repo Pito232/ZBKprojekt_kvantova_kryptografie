@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Stav a QKD Protokoly - Kvantová Kryptografie</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<header id="header">
+				<a href="index.html" class="title">Kvantová Kryptografie</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Úvod</a></li>
+						<li><a href="stav.html" class="active">Stav a QKD Protokoly</a></li>
+						<li><a href="utoky.html">Útoky a PQC</a></li>
+						<li><a href="reference.html">Závěr a Ref.</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<div id="wrapper">
+
+				<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">1. Současný Stav a QKD Protokoly</h1>
+							
+							<h2>1.1 The Current State of the Art (Současný stav)</h2>
+							<p>Kvantová kryptografie (především **QKD - Kvantová distribuce klíče**) je v současnosti komerčně nasazována v bankovním sektoru a vládní infrastruktuře pro zajištění extrémně citlivé komunikace. 
+
+[Image of QKD Network Architecture]
+</p>
+                            
+                            <h3>Implementace QKD a její limity</h3>
+                            <p>Systémy QKD využívají k přenosu kvantových bitů (**qubitů**) optická vlákna. Hlavním limitem je **útlum signálu**, který omezuje dosah na desítky až stovky kilometrů. Pro překlenutí delších vzdáleností se používají **důvěryhodné relé/uzly** (Trusted Relays), které však představují teoretické bezpečnostní riziko (uzel musí být stoprocentně bezpečný).</p>
+                            <p>Alternativou je vývoj **Satelitní QKD** (např. čínský satelit Micius), která má potenciál vytvořit globální distribuční síť, ale čelí výzvám atmosférického rušení.</p>
+                            
+                            <h2>1.2 Detailní Popis: Protokol BB84</h2>
+							<span class="image fit"><img src="images/bb84_diagram.jpg" alt="Diagram protokolu BB84" /></span>
+                            <p>Protokol BB84 (Bennett a Brassard, 1984) je základem většiny QKD systémů a zajišťuje **nepodmíněnou bezpečnost** klíče díky dvěma principům kvantové mechaniky: **superpozici** a **teorému o nezklonovatelnosti**.</p>
+                            
+                            <h3>Principy a Bezpečnost</h3>
+                            <ol>
+                                <li>**Kódování:** Alice kóduje bity do polarizace fotonů, náhodně volí mezi dvěma bázemi: **Rektilineární** (0°/90°) a **Diagonální** (45°/135°).</li>
+                                <li>**Měření:** Bob náhodně volí jednu z bází pro měření.</li>
+                                <li>**Detekce Odposlechu:** Pokud se odposlouchávač (Eva) pokusí měřit (což musí dělat náhodně), **naruší kvantový stav** fotonu. To vede ke zvýšené chybovosti (QBER), kterou Alice a Bob při porovnání části klíče odhalí. Pokud je QBER příliš vysoká, klíč je zahozen.</li>
+                            </ol>
+						</div>
+					</section>
+			</div>
+
+		<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; 2025 Kvantová Kryptografie Projekt.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Útoky a Postkvantová Kryptografie - Kvantová Kryptografie</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<header id="header">
+				<a href="index.html" class="title">Kvantová Kryptografie</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Úvod</a></li>
+						<li><a href="stav.html">Stav a QKD Protokoly</a></li>
+						<li><a href="utoky.html" class="active">Útoky a PQC</a></li>
+						<li><a href="reference.html">Závěr a Ref.</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<div id="wrapper">
+
+				<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">2. Útoky a Postkvantová Kryptografie</h1>
+
+							<section>
+									<h2>2.1 Útok Harvest Now, Decrypt Later (HNDL)</h2>
+                                    <blockquote>
+                                        Hrozba, kterou představuje **Shorův algoritmus** spuštěný na budoucích kvantových počítačích (CRQC), je reálná. Útok HNDL spočívá v masivním sběru dnes šifrovaných dat a jejich ukládání s cílem zpětné dešifrace, jakmile bude CRQC dostupný. Toto ohrožuje data, která musí zůstat důvěrná po desítky let.
+                                    </blockquote>
+                                    
+                                    <h3>Praktické útoky na QKD Implementace</h3>
+                                    <p>I teoreticky nepodmíněná bezpečnost QKD selhává, pokud jsou systémy špatně implementovány. Útočníci často cílí na hardwarové komponenty, jako jsou detektory fotonů:</p>
+                                    <ul class="alt">
+                                        <li>**PNS (Photon Number Splitting) Útok:** Využívá fakt, že reálné QKD zdroje posílají kromě jednoho fotonu i pulzy s více fotony. Útočník si jeden foton odebere a změří ho, aniž by byl detekován.</li>
+                                        <li>**"Blinding" Útoky:** Útočník zaslepí detektory, donutí je registrovat falešné fotony a manipuluje s naměřenými daty.</li>
+                                    </ul>
+								</section>
+                                
+                            <section>
+									<h2>2.2 Postkvantová Kryptografie (PQC)</h2>
+                                    <p>PQC je soubor nových algoritmů (např. založených na mřížkách), které běží na klasických počítačích, ale jsou odolné proti kvantovým útokům. Cílem je zajistit plynulou migraci klíčových infrastruktur do doby, než bude QKD nasazena globálně.</p>
+
+									<h3>Porovnání klíčových PQC algoritmů (Vlastní příspěvek)</h3>
+									<div class="table-wrapper">
+										<table class="alt">
+											<thead>
+												<tr>
+													<th>Algoritmus (NIST Standard)</th>
+													<th>Typ použití</th>
+													<th>Založeno na (Matematická báze)</th>
+													<th>Velikost veřejného klíče (přibližně)</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>CRYSTALS-Kyber</td>
+													<td>Záměna klíčů (KEM) / Šifrování</td>
+													<td>Moduly mřížky (Lattices)</td>
+													<td>1.2 KB</td>
+												</tr>
+												<tr>
+													<td>CRYSTALS-Dilithium</td>
+													<td>Digitální podpis (DS)</td>
+													<td>Moduly mřížky (Lattices)</td>
+													<td>1.3 KB</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</section>
+                                
+                                <section>
+                                    <h2>2.3 Vlastní názor na téma</h2>
+                                    <p>Domníváme se, že bezpečná migrace vyžaduje **hybridní kryptografii** – kombinaci QKD pro vysokou bezpečnost na krátké vzdálenosti a PQC pro globální, masově nasaditelné digitální služby, jako je webová komunikace a digitální podpisy. Závod mezi vývojem kvantových počítačů a standardizací PQC je závod s časem.</p>
+                                </section>
+
+						</div>
+					</section>
+
+			</div>
+
+		<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; 2025 Kvantová Kryptografie Projekt.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
