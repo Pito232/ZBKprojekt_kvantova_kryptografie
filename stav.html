@@ -75,52 +75,95 @@
                             
 							<h3>2.1 Protokol BB84</h3>
 							
-							<section style="margin-left: 2em;">
-							
-								<p>Tento protokol navrhli Charles Bennett a Gilles Brassard v roce 1984. Je to první a stále nejrozšířenější protokol pro distribuci kvantového klíče. Funguje na principu posílání fotonů ve dvou různých bázích:
-								</p>
-									<section style="margin-left: 2em;">
-										<p>
-										a) Rektilineární báze (+): Měří polarizaci 0° (horizontální) a 90° (vertikální).
-										</p>
-										<p>
-										b) Diagonální báze (x): Měří polarizaci 45° a 135°. 
-										</p>
-									</section>
-								
-								<h4>Průbeh přenosu:</h4>
 								<section style="margin-left: 2em;">
-										<p>
-										1. <b>Odeslání (Alice):</b> Alice vygeneruje náhodné bity a pro každý bit náhodně zvolí jednu ze dvou bází (+ nebo x). Pošle fotony Bobovi.
-										</p>
-										<p>
-										2. <b>Měření (Bob):</b> Bob neví, jakou bázi Alice použila. Pro každý příchozí foton si náhodně zvolí bázi a změří ho. 
-										</p>
-										<p>
-										3. <b>Sifting (Prosívání):</b> Po skončení přenosu Alice a Bob použijí veřejný (nezabezpečený) kanál, aby si řekli, jaké báze použili (neříkají si výsledky měření, jen typy bází).  
-										</p>
-										<p>
-										4. <b>Shoda:</b> Ponechají si pouze ty bity, u kterých se shodli na stejné bázi. Ostatní zahodí. Tím vznikne tzv. "surový klíč" (Raw Key).  
-										</p>
-								</section>
+							
+									<p>Tento protokol navrhli Charles Bennett a Gilles Brassard v roce 1984. Je to první a stále nejrozšířenější protokol pro distribuci kvantového klíče. Funguje na principu posílání fotonů ve dvou různých bázích:
+									</p>
+										<section style="margin-left: 2em;">
+											<p>
+												a) Rektilineární báze (+): Měří polarizaci 0° (horizontální) a 90° (vertikální).
+											</p>
+											<p>
+												b) Diagonální báze (x): Měří polarizaci 45° a 135°. 
+											</p>
+										</section>
 								
-							</section>
+											<h4>Průbeh přenosu:</h4>
+												<section style="margin-left: 2em;">
+													<p>
+														1. <b>Odeslání (Alice):</b> Alice vygeneruje náhodné bity a pro každý bit náhodně zvolí jednu ze dvou bází (+ nebo x). Pošle fotony Bobovi.
+													</p>
+													<p>
+														2. <b>Měření (Bob):</b> Bob neví, jakou bázi Alice použila. Pro každý příchozí foton si náhodně zvolí bázi a změří ho. 
+													</p>
+													<p>
+														3. <b>Sifting (Prosívání):</b> Po skončení přenosu Alice a Bob použijí veřejný (nezabezpečený) kanál, aby si řekli, jaké báze použili (neříkají si výsledky měření, jen typy bází).  
+													</p>
+													<p>
+														4. <b>Shoda:</b> Ponechají si pouze ty bity, u kterých se shodli na stejné bázi. Ostatní zahodí. Tím vznikne tzv. "surový klíč" (Raw Key).  
+													</p>
+												</section>
+								
+								</section>
 							
 							<span class="image fit">
 								<img src="images/bb84image.png" alt="Schéma protokolu BB84" style="max-width: 60%; display: block; margin: 0 auto;" />
 							</span>
 							
-							<p class="align-center" style="max-width: 75%; display: block; margin: 0 auto;">Schéma protokolu BB84
-							</p>
-							
-							
-							
-							<h3>1.3 Detekovatelnost odposlechu</h3>
-							
-							<section style="margin-left: 2em;">
-								<p>Pokud se útočník (v kryptografii tradičně nazývaný "Eve") pokusí zachytit fotony posílané mezi odesílatelem ("Alice") a příjemcem ("Bob"), musí je změřit. Tím ale naruší jejich kvantový stav a vnese do komunikace chyby. Alice a Bob následnou kontrolou chybovosti (QBER – Quantum Bit Error Rate) zjistí, že kanál není bezpečný, a přenos přeruší.
+								<p class="align-center" style="max-width: 75%; display: block; margin: 0 auto;">Schéma protokolu BB84
 								</p>
-							</section>
+									<p>
+										Pokud se někdo pokusil odposlouchávat, vnesl do měření chyby. Alice a Bob porovnají malou část svého klíče. Pokud najdou chyby (nad určitou hranici, obvykle 11 %), vědí, že na lince byla Eve, a klíč zahodí.   
+									</p>
+							
+							<h3>2.2 Protokol E91 (Ekert)</h3>
+							
+								<section style="margin-left: 2em;">
+								<p>
+									Alternativou k BB84 je protokol E91, který navrhl Artur Ekert v roce 1991. Ten nevyužívá polarizaci jednotlivých fotonů posílaných od Alice k Bobovi, ale fenoménu kvantového provázání (entanglement). Zdroj uprostřed generuje páry provázaných fotonů – jeden letí k Alici, druhý k Bobovi. Měření jednoho fotonu okamžitě určí stav druhého, bez ohledu na vzdálenost, což zaručuje dokonalou korelaci klíčů.
+							
+								</p>
+								</section>
+								
+							<h2>3. Implementace a stav technologie</h2>
+								
+									<p>
+										Ačkoliv je teoretický model QKD matematicky dokonalý, praktická realizace naráží na limity současného hardwaru a fyzikálního 4 prostředí. V současnosti se rozvíjejí především tři hlavní směry implementace:
+									</p>
+										
+											<h3>3.1 Optická vlákna a Trusted Nodes </h3>
+											<section style="margin-left: 2em;">
+												<p>
+													Většina komerčních QKD systémů (např. od firem ID Quantique, Toshiba nebo QuintessenceLabs) využívá standardní optická vlákna, často v tzv. režimu „Dark Fiber“ (vyhrazená, jinak nevyužitá vlákna). Hlavním problémem přenosu ve vláknech je útlum signálu. Zatímco klasický optický signál lze po cestě zesílit, kvantový stav zesílit nelze (brání tomu teorém o zákazu kopírování).
+												</p>
+												
+												<p>
+													<b>Limit vzdálenosti:</b> Maximální dosah bez přerušení je v současnosti cca 100 km. 
+												</p>
+												<p>
+													<b>Řešení (Trusted Nodes):</b> Aby bylo možné poslat klíč například z Prahy do Brna, musí se využít síť tzv. důvěryhodných uzlů. V uzlu se klíč dešifruje, uloží (v zabezpečeném prostředí) a znovu zašifruje pro další úsek cesty. Toto je však bezpečnostní slabina – uzel musí být fyzicky dokonale střežen.  
+												</p>
+								
+											</section>
+											
+											<h3>3.2 Satelitní komunikace (Free-Space Optics)  </h3>
+											<section style="margin-left: 2em;">
+												<p>
+													Pro překonání limitu vzdálenosti a propojení kontinentů se využívá přenos vakuem, kde fotony nedegradují tak rychle jako ve skle.
+												</p>
+												
+												<p>
+													Převratným milníkem byl v roce 2016 start čínského satelitu Micius. Ten funguje jako důvěryhodný uzel na oběžné dráze a umožnil úspěšnou distribuci klíče a následný šifrovaný videohovor mezi Pekingem a Vídní na vzdálenost přes 7 000 km. Satelitní QKD je budoucností globálního kvantového internetu.  
+												</p>
+												
+											</section>
+											<span class="image fit">
+								<img src="images/expmicimage.png" alt="Experimentální spojení QKD pomocí satelitu Micius" style="max-width: 60%; display: block; margin: 0 auto;" />
+							</span>
+							
+								<p class="align-center" style="max-width: 75%; display: block; margin: 0 auto;">Experimentální spojení QKD pomocí satelitu Micius
+								</p>
+							
 						</div>
 					</section>
 			</div>
