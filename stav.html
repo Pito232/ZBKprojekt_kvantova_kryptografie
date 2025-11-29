@@ -69,13 +69,14 @@
 							
 							
                             <h2>2. Používané metody a protokoly</h2>
-							<span class="image fit"><img src="images/bb84_diagram.jpg" alt="Diagram protokolu BB84" /></span>
+							
                             <p>Samotná kvantová kryptografie se nepoužívá k šifrování velkých objemů dat (filmů, dokumentů), protože je relativně pomalá. Používá se pro technologii QKD (Quantum Key Distribution) – tedy k bezpečnému vytvoření a předání náhodného šifrovacího klíče. Jakmile mají obě strany klíč, použijí ho pro klasické symetrické šifrování (např. AES), které je velmi rychlé. Nejznámějším a nejpoužívanějším protokolem je BB84. 
 							</p>
                             
 							<h3>2.1 Protokol BB84</h3>
 							
 							<section style="margin-left: 2em;">
+							
 								<p>Tento protokol navrhli Charles Bennett a Gilles Brassard v roce 1984. Je to první a stále nejrozšířenější protokol pro distribuci kvantového klíče. Funguje na principu posílání fotonů ve dvou různých bázích:
 								</p>
 									<section style="margin-left: 2em;">
@@ -87,7 +88,24 @@
 										</p>
 									</section>
 								
+								<h4>Průbeh přenosu:</h4>
+								<section style="margin-left: 2em;">
+										<p>
+										1. <b>Odeslání (Alice):</b> Alice vygeneruje náhodné bity a pro každý bit náhodně zvolí jednu ze dvou bází (+ nebo x). Pošle fotony Bobovi.
+										</p>
+										<p>
+										2. <b>Měření (Bob):</b> Bob neví, jakou bázi Alice použila. Pro každý příchozí foton si náhodně zvolí bázi a změří ho. 
+										</p>
+										<p>
+										3. <b>Sifting (Prosívání):</b> Po skončení přenosu Alice a Bob použijí veřejný (nezabezpečený) kanál, aby si řekli, jaké báze použili (neříkají si výsledky měření, jen typy bází).  
+										</p>
+										<p>
+										4. <b>Shoda:</b> Ponechají si pouze ty bity, u kterých se shodli na stejné bázi. Ostatní zahodí. Tím vznikne tzv. "surový klíč" (Raw Key).  
+										</p>
+								</section>
+								
 							</section>
+							<span class="image fit"><img src="images/bb84_diagram.jpg" alt="Diagram protokolu BB84" /></span>
 							
 							
 							
