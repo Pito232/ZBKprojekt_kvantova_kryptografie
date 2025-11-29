@@ -14,9 +14,9 @@
 				<nav>
 					<ul>
 						<li><a href="index.html">Úvod</a></li>
-						<li><a href="stav.html">Stav a QKD Protokoly</a></li>
-						<li><a href="utoky.html" class="active">Útoky a PQC</a></li>
-						<li><a href="reference.html">Závěr a Ref.</a></li>
+						<li><a href="stav.html" >Principy fungování a stav technologie</a></li>
+						<li><a href="utoky.html" class="active">Známe útoky</a></li>
+						<li><a href="reference.html">Závěr</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -25,21 +25,44 @@
 
 				<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">2. Útoky a Postkvantová Kryptografie</h1>
+							<h1 class="major">2. Známé typy útoků</h1>
 
 							<section>
-									<h2>2.1 Útok Harvest Now, Decrypt Later (HNDL)</h2>
-                                    <blockquote>
-                                        Hrozba, kterou představuje **Shorův algoritmus** spuštěný na budoucích kvantových počítačích (CRQC), je reálná. Útok HNDL spočívá v masivním sběru dnes šifrovaných dat a jejich ukládání s cílem zpětné dešifrace, jakmile bude CRQC dostupný. Toto ohrožuje data, která musí zůstat důvěrná po desítky let.
-                                    </blockquote>
-                                    
-                                    <h3>Praktické útoky na QKD Implementace</h3>
-                                    <p>I teoreticky nepodmíněná bezpečnost QKD selhává, pokud jsou systémy špatně implementovány. Útočníci často cílí na hardwarové komponenty, jako jsou detektory fotonů:</p>
-                                    <ul class="alt">
-                                        <li>**PNS (Photon Number Splitting) Útok:** Využívá fakt, že reálné QKD zdroje posílají kromě jednoho fotonu i pulzy s více fotony. Útočník si jeden foton odebere a změří ho, aniž by byl detekován.</li>
-                                        <li>**"Blinding" Útoky:** Útočník zaslepí detektory, donutí je registrovat falešné fotony a manipuluje s naměřenými daty.</li>
-                                    </ul>
-								</section>
+								<h2>2.1 Útok rozdělením počtu fotonů (PNS Attack) </h2>
+							<p>Toto je nejznámější slabina reálných implementací. Ideální QKD vyžaduje zdroj, který vysílá vždy přesně jeden foton. Reálné lasery jsou však tlumené a statisticky se stává, že v jednom pulzu vyšlou dva nebo více fotonů se stejnou informací. 
+							</p>
+							
+							<ul class="alt">
+										<li>Princip útoku: Útočník (Eve) si v optickém vlákně jeden nadbytečný foton "odčerpá" a změří ho, zatímco druhý foton nechá nerušeně pokračovat k Bobovi. </li>
+										<li>Důsledek: Bob a Alice nezjistí žádnou chybovost, ale Eve přesto zná část klíče. </li>
+										<li>Obrana: Používá se vylepšený protokol s tzv. návnadovými stavy (Decoy States), které tento útok odhalí.</li>
+									</ul>
+									
+							</section>
+
+							<section>
+								<h2>2.2 Útok Trojského koně</h2>
+								<p>Tento útok cílí na koncová zařízení Alice nebo Boba. Útočník posvítí silným světelným zdrojem přes optické vlákno přímo do zařízení odesílatele.</p>
+    
+								
+									<ul class="alt">
+										<li>Princip: Světlo se odrazí od vnitřních komponent (např. fázových modulátorů) a vrátí se zpět k útočníkovi. Z analýzy odraženého světla může útočník zjistit, jak byla zrovna nastavena báze pro kódování, aniž by musel měřit samotný letící foton.  </li>
+										<li>Obrana: Instalace optických izolátorů a filtrů, které propouští světlo pouze jedním směrem. </li>
+										
+									</ul>
+    
+									
+    
+							</section>
+
+							<section>
+								<h2>2.3 Denial of service</h2>
+								<p>Kvantová komunikace je extrémně citlivá na rušení. Útočníkovi stačí do vlákna pustit silný šum, nebo vlákno fyzicky mírně ohnout. Detekce chybovosti okamžitě stoupne nad povolenou mez a systém bezpečnostně ukončí spojení. Ačkoliv nedojde k úniku dat, komunikace je znemožněna.</p>
+								<span class="image fit">
+									<img src="images/dosimage.png" alt="Schéma fyzického útoku na optický kanál a jeho následná detekce." style="max-width: 60%; display: block; margin: 0 auto;" />
+								</span>
+							
+							</section>
                                 
                             <section>
 									<h2>2.2 Postkvantová Kryptografie (PQC)</h2>

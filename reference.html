@@ -14,9 +14,9 @@
 				<nav>
 					<ul>
 						<li><a href="index.html">Úvod</a></li>
-						<li><a href="stav.html">Stav a QKD Protokoly</a></li>
-						<li><a href="utoky.html">Útoky a PQC</a></li>
-						<li><a href="reference.html" class="active">Závěr a Ref.</a></li>
+						<li><a href="stav.html" >Principy fungování a stav technologie</a></li>
+						<li><a href="utoky.html">Známe útoky</a></li>
+						<li><a href="reference.html" class="active">Závěr</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -25,17 +25,61 @@
 
 				<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">3. Závěr a Reference</h1>
+							<h1 class="major">3. Vlastní názor, závěr a reference</h1>
 							
-							<h2>3.1 Závěr</h2>
-							<p>Tato práce analyzovala současný stav a budoucnost kvantové kryptografie. Popsali jsme, že na rozdíl od klasických metod, které spoléhají na výpočetní složitost, nabízí QKD bezpečnost garantovanou fyzikálními zákony – konkrétně Heisenbergovým principem neurčitosti a teorémem o zákazu kopírování.</p>
+							<h2>3.1 Vlastní názor</h2>
+							<p> Kvantová kryptografie představuje fascinující spojení teoretické fyziky a praktické informatiky. Z našeho pohledu však tato technologie v nejbližších 20 letech nenahradí klasickou kryptografii plošně, ale stane se exkluzivní službou pro specifické sektory.</p>
+							<p> Hlavní konkurencí pro QKD je v současnosti tzv. Post-Quantum Cryptography (PQC). Jedná se o nové matematické algoritmy, které jsou odolné proti kvantovým počítačům, ale běží na běžném hardwaru. </p>
+							<p> Jako vlastní přínos k tématu předkládáme srovnání těchto dvou přístupů, které definuje jejich budoucí roli: </p>
+							<div class="table-wrapper">
+								<table class="alt">
+									<thead>
+										<tr>
+											<th>Vlastnost</th>
+											<th>QKD (Kvantová distribuce klíče)</th>
+											<th>PQC (Post-kvantová kryptografie)</th>
+										</tr>
+									</thead>
+								<tbody>
+									<tr>
+										<td><h4>Princip bezpečnosti</h4></td>
+										<td>Fyzikální zákony (neodposlouchávatelné) </td>
+										<td>Matematická složitost (těžko spočitatelné) </td>
+									</tr>
+									<tr>
+										<td><h4>Hardware</h4></td>
+										<td>Vyžaduje speciální lasery a detektory </td>
+										<td>Běží na běžném CPU/čipu </td>
+									</tr>
+									<tr>
+										<td><h4>Dosah</h4></td>
+										<td>Limitován (cca 100 km bez uzlu) </td>
+										<td>Neomezený (internet) </td>
+									</tr>
+									<tr>
+										<td><h4>Cena implementace</h4></td>
+										<td>Velmi vysoká </td>
+										<td>Nízká (pouze softwarový update)  </td>
+									</tr>
+									<tr>
+										<td><h4>Hlavní využití</h4></td>
+										<td>Vládní linky, páteřní sítě bank </td>
+										<td>Běžný internet (HTTPS, IoT, maily) </td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<p>Domníváme se, že vznikne hybridní model. Kritická infrastruktura (např. spojení mezi datacentry bank) bude fyzicky chráněna pomocí QKD, protože tam se cena neřeší a bezpečnost musí být absolutní. Koncoví uživatelé (mobily, notebooky) přejdou na softwarovou PQC (např. algoritmy CRYSTALS-Kyber), protože integrace QKD do mobilu je technicky zatím nemožná. </p>
+							
+							<h2>3.2 Závěr</h2>
+							<p>Tato práce analyzovala současný stav a budoucnost kvantové kryptografie. Popsali jsme, že na rozdíl od klasických metod, které spoléhají na výpočetní složitost, nabízí QKD bezpečnost garantovanou fyzikálními zákony – konkrétně Heisenbergovým principem neurčitosti a teorémem o zákazu kopírování. </p>
 							
 							<p>V práci jsme detailně rozebrali protokol BB84, který tvoří základ většiny dnešních systémů, a upozornili jsme na existující implementační limity, jako je útlum v optických vláknech. Tyto limity jsou postupně překonávány pomocí satelitních technologií (projekt Micius) a sítí důvěryhodných uzlů. Zmínili jsme také, že ani kvantová kryptografie není imunní vůči chybám v hardwaru, jak dokazují útoky typu Photon Number Splitting.</p>
 							
-							<p>Dle našeho názoru lze konstatovat, že éra "Quantum Internetu" již začala. Ačkoliv se pravděpodobně nestane běžnou technologií pro domácnosti, pro národní bezpečnost a globální finanční systém bude v nadcházející dekádě kvantových počítačů naprosto nepostradatelná.</p>
+							<p>Dle našeho názoru lze konstatovat, že éra "Quantum Internetu" již začala. Ačkoliv se pravděpodobně nestane běžnou technologií pro domácnosti, pro národní bezpečnost a globální finanční systém bude v nadcházející dekádě kvantových počítačů naprosto nepostradatelná. </p>
                             
-                            <h2>3.2 Reference</h2>
-                            <p>Seznam klíčových a důvěryhodných zdrojů, použitých při tvorbě projektu.</p>
+                            <h2>3.3 Reference</h2>
+                            <p>Seznam klíčových zdrojů, použitých při tvorbě projektu.</p>
                             
                             <ul class="alt">
                                 <li>Bennett, C. H., & Brassard, G. (1984). *Quantum cryptography: Public key distribution and coin tossing*. Proceedings of IEEE International Conference on Computers, Systems, and Signal Processing. (Protokol BB84)</li>
