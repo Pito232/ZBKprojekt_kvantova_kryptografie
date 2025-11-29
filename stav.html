@@ -25,28 +25,78 @@
 
 				<section id="main" class="wrapper">
 						<div class="inner">
-							<h1 class="major">1. Současný Stav a QKD Protokoly</h1>
+							<h1 class="major">1. Principy fungování a stav technologie</h1>
 							
-							<h2>1.1 The Current State of the Art (Současný stav)</h2>
-							<p>Kvantová kryptografie (především **QKD - Kvantová distribuce klíče**) je v současnosti komerčně nasazována v bankovním sektoru a vládní infrastruktuře pro zajištění extrémně citlivé komunikace. 
-
-[Image of QKD Network Architecture]
-</p>
-                            
-                            <h3>Implementace QKD a její limity</h3>
-                            <p>Systémy QKD využívají k přenosu kvantových bitů (**qubitů**) optická vlákna. Hlavním limitem je **útlum signálu**, který omezuje dosah na desítky až stovky kilometrů. Pro překlenutí delších vzdáleností se používají **důvěryhodné relé/uzly** (Trusted Relays), které však představují teoretické bezpečnostní riziko (uzel musí být stoprocentně bezpečný).</p>
-                            <p>Alternativou je vývoj **Satelitní QKD** (např. čínský satelit Micius), která má potenciál vytvořit globální distribuční síť, ale čelí výzvám atmosférického rušení.</p>
-                            
-                            <h2>1.2 Detailní Popis: Protokol BB84</h2>
+							<h2>1. Fyzikální principy</h2>
+							
+							<p>
+							Základním stavebním kamenem kvantové kryptografie není klasický bit (který nabývá hodnoty 0 nebo 1), ale kvantový bit neboli qubit. V praxi se pro přenos klíčů nejčastěji využívají fotony (částice světla), u kterých informaci kódujeme pomocí jejich polarizace.
+							</p>
+							
+							<span class="image fit">
+								<img src="images/fyzpimage.png" alt="Geometrická reprezentace stavu qubitu. Zatímco klasický bit může nabývat pouze hodnot 0 nebo 1 (póly sféry), qubit se může nacházet v obecném stavu kdekoli na povrchu sféry." style="max-width: 60%; display: block; margin: 0 auto;" />
+							</span>
+							
+							<p class="align-center" style="max-width: 75%; display: block; margin: 0 auto;">Geometrická reprezentace stavu qubitu. Zatímco klasický bit může nabývat pouze hodnot 0 nebo 1 (póly sféry), qubit se může nacházet v obecném stavu kdekoli na povrchu sféry.
+							</p>
+							
+							<p>
+							</p>
+							<p>
+							Bezpečnost přenosu nevychází ze složitosti matematických úloh, ale ze dvou klíčových zákonů kvantové mechaniky:
+                            </p>
+							
+                            <h3>1.1 Heisenbergův princip neurčitosti</h3>
+							<section style="margin-left: 2em;">
+								<p>Tento princip říká, že u kvantových částic nelze současně s libovolnou přesností změřit určité páry vlastností. V kontextu kryptografie to znamená, že měření mění stav systému. Pokud se někdo pokusí foton změřit, aby zjistil jeho hodnotu, nevyhnutelně změní jeho polarizaci.  
+								</p>
+							</section>
+							<h3>1.2 No-cloning theorem (Teorém o zákazu kopírování)</h3>
+							
+							<section style="margin-left: 2em;">
+								<p>Toto je nejdůležitější pravidlo pro bezpečnost. Říká, že je nemožné vytvořit identickou kopii neznámého kvantového stavu.
+								</p>
+							</section>
+							
+							<p>Díky těmto principům vzniká unikátní bezpečnostní vlastnost: </p>
+							
+							<h3>1.3 Detekovatelnost odposlechu</h3>
+							
+							<section style="margin-left: 2em;">
+								<p>Pokud se útočník (v kryptografii tradičně nazývaný "Eve") pokusí zachytit fotony posílané mezi odesílatelem ("Alice") a příjemcem ("Bob"), musí je změřit. Tím ale naruší jejich kvantový stav a vnese do komunikace chyby. Alice a Bob následnou kontrolou chybovosti (QBER – Quantum Bit Error Rate) zjistí, že kanál není bezpečný, a přenos přeruší.
+								</p>
+							</section>
+							
+							
+                            <h2>2. Používané metody a protokoly</h2>
 							<span class="image fit"><img src="images/bb84_diagram.jpg" alt="Diagram protokolu BB84" /></span>
-                            <p>Protokol BB84 (Bennett a Brassard, 1984) je základem většiny QKD systémů a zajišťuje **nepodmíněnou bezpečnost** klíče díky dvěma principům kvantové mechaniky: **superpozici** a **teorému o nezklonovatelnosti**.</p>
+                            <p>Samotná kvantová kryptografie se nepoužívá k šifrování velkých objemů dat (filmů, dokumentů), protože je relativně pomalá. Používá se pro technologii QKD (Quantum Key Distribution) – tedy k bezpečnému vytvoření a předání náhodného šifrovacího klíče. Jakmile mají obě strany klíč, použijí ho pro klasické symetrické šifrování (např. AES), které je velmi rychlé. Nejznámějším a nejpoužívanějším protokolem je BB84. 
+							</p>
                             
-                            <h3>Principy a Bezpečnost</h3>
-                            <ol>
-                                <li>**Kódování:** Alice kóduje bity do polarizace fotonů, náhodně volí mezi dvěma bázemi: **Rektilineární** (0°/90°) a **Diagonální** (45°/135°).</li>
-                                <li>**Měření:** Bob náhodně volí jednu z bází pro měření.</li>
-                                <li>**Detekce Odposlechu:** Pokud se odposlouchávač (Eva) pokusí měřit (což musí dělat náhodně), **naruší kvantový stav** fotonu. To vede ke zvýšené chybovosti (QBER), kterou Alice a Bob při porovnání části klíče odhalí. Pokud je QBER příliš vysoká, klíč je zahozen.</li>
-                            </ol>
+							<h3>2.1 Protokol BB84</h3>
+							
+							<section style="margin-left: 2em;">
+								<p>Tento protokol navrhli Charles Bennett a Gilles Brassard v roce 1984. Je to první a stále nejrozšířenější protokol pro distribuci kvantového klíče. Funguje na principu posílání fotonů ve dvou různých bázích:
+								</p>
+									<section style="margin-left: 2em;">
+										<p>
+										a) Rektilineární báze (+): Měří polarizaci 0° (horizontální) a 90° (vertikální).
+										</p>
+										<p>
+										b) Diagonální báze (x): Měří polarizaci 45° a 135°. 
+										</p>
+									</section>
+								
+							</section>
+							
+							
+							
+							<h3>1.3 Detekovatelnost odposlechu</h3>
+							
+							<section style="margin-left: 2em;">
+								<p>Pokud se útočník (v kryptografii tradičně nazývaný "Eve") pokusí zachytit fotony posílané mezi odesílatelem ("Alice") a příjemcem ("Bob"), musí je změřit. Tím ale naruší jejich kvantový stav a vnese do komunikace chyby. Alice a Bob následnou kontrolou chybovosti (QBER – Quantum Bit Error Rate) zjistí, že kanál není bezpečný, a přenos přeruší.
+								</p>
+							</section>
 						</div>
 					</section>
 			</div>
